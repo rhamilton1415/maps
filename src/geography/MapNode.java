@@ -6,7 +6,8 @@ public abstract class MapNode<T extends Number>
 {
 	private T xCoordinate;
 	private T yCoordinate;
-	private HashSet<Path<? extends MapNode<? extends Number>>> paths;
+	private HashSet<Path> paths;
+	
 	public MapNode(T x, T y)
 	{
 		xCoordinate = x;
@@ -33,9 +34,9 @@ public abstract class MapNode<T extends Number>
 			return false;
 		}
 	}
-	public <M extends MapNode<? extends Number>> Path<? extends MapNode<? extends Number>> getPathTo(M target) throws Exception
+	public <M extends MapNode<? extends Number>> Path getPathTo(M target) throws Exception
 	{
-		for(Path<? extends MapNode<? extends Number>> p : paths)
+		for(Path p : paths)
 		{
 			if(p.hasMapNode(target))
 			{
@@ -48,7 +49,7 @@ public abstract class MapNode<T extends Number>
 	 * Returns the exact distance between the two MapNode arguments, not considering existing Paths
 	 * @param to, from MapNode instances to measure
 	 */
-	public static <M extends MapNode> double getDistance(M to, M from)
+	public static <M extends MapNode<? extends Number>> double getDistance(M to, M from)
 	{
 		double xDistance = Math.abs(to.getXCoordinate().doubleValue()-from.getXCoordinate().doubleValue());
 		double yDistance = Math.abs(to.getYCoordinate().doubleValue()-from.getYCoordinate().doubleValue());

@@ -14,18 +14,18 @@ public class ProvinceTesting {
 	@Test
 	public void provinceConstructionTest()
 	{
-		Province p = new Province(0,0);
+		Province<Integer> p = new Province<>(0,0);
 		assertEquals(p.getXCoordinate(),0);
 		assertEquals(p.getYCoordinate(),0);
-		MapNode n = new Province(1,1);
-		assertTrue(n instanceof Province);
+		MapNode<Integer> n = new Province<>(1,1);
+		assertTrue(n instanceof Province<Integer>);
 	}
 	
 	@Test
 	public void interProvincePathCreationTest()
 	{
-		Province pathFrom = new Province(0,0);
-		Province pathTo = new Province(1,0);
+		Province<Integer> pathFrom = new Province<>(0,0);
+		Province<Integer> pathTo = new Province<>(1,0);
 		MapNode.createPath(pathFrom,pathTo);
 		assertTrue(pathFrom.hasPathTo(pathTo));
 		assertTrue(pathTo.hasPathTo(pathFrom));
@@ -36,11 +36,11 @@ public class ProvinceTesting {
 	@Test
 	public void multiplePathCreation()
 	{
-		Province centre = new Province(0,0);
-		Province north = new Province(0,5);
-		Province east = new Province(5,0);
-		Province south = new Province(0,-5);
-		Province west = new Province(-5,0);
+		Province<Integer> centre = new Province<>(0,0);
+		Province<Integer> north = new Province<>(0,5);
+		Province<Integer> east = new Province<>(5,0);
+		Province<Integer> south = new Province<>(0,-5);
+		Province<Integer> west = new Province<>(-5,0);
 		
 		MapNode.createPath(centre,north);
 		MapNode.createPath(centre,east);
@@ -65,8 +65,8 @@ public class ProvinceTesting {
 	@Test
 	public void attemptingToGetAPathThatDoesntExistTest()
 	{
-		Province p1 = new Province(0,0);
-		Province p2 = new Province(0,1);
+		Province<Integer> p1 = new Province<>(0,0);
+		Province<Integer> p2 = new Province<>(0,1);
 		try
 		{
 			p1.getPathTo(p2);

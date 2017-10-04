@@ -2,10 +2,10 @@ package geography;
 
 import mathsUtility.*;
 
-public class Path<T extends MapNode<? extends Number>>
+public class Path
 {
-	private final T mapNodeOne;
-	private final T mapNodeTwo;
+	private final MapNode mapNodeOne;
+	private final MapNode mapNodeTwo;
 	private final double pathDistance; //Distance may not equal cost
 	/**
 	 * The arguments for a Path Instance must pass the following sanity checks:
@@ -14,7 +14,7 @@ public class Path<T extends MapNode<? extends Number>>
 	 * @param to a MapNode to be included in the Path
 	 * @param from a MapNode to be included in the Path
 	 */
-	public Path(T to, T from)
+	public Path(MapNode to, MapNode from)
 	{
 		mapNodeOne = to;
 		mapNodeTwo = from;
@@ -24,9 +24,9 @@ public class Path<T extends MapNode<? extends Number>>
 	{
 		return (mapNodeOne == node || mapNodeTwo == node);
 	}
-	public Pair<T,T> getNodes()
+	public Pair<MapNode,MapNode> getNodes()
 	{
-		return new Pair<T,T>(mapNodeOne,mapNodeTwo);
+		return new Pair<MapNode,MapNode>(mapNodeOne,mapNodeTwo);
 	}
 	public double getPathDistance()
 	{

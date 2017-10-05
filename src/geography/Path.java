@@ -4,8 +4,8 @@ import mathsUtility.*;
 
 public class Path
 {
-	private final MapNode mapNodeOne;
-	private final MapNode mapNodeTwo;
+	private final MapNode<? extends Number> mapNodeOne;
+	private final MapNode<? extends Number> mapNodeTwo;
 	private final double pathDistance; //Distance may not equal cost
 	/**
 	 * The arguments for a Path Instance must pass the following sanity checks:
@@ -14,7 +14,7 @@ public class Path
 	 * @param to a MapNode to be included in the Path
 	 * @param from a MapNode to be included in the Path
 	 */
-	public Path(MapNode to, MapNode from)
+	public Path(MapNode<? extends Number> to, MapNode<? extends Number> from)
 	{
 		//TODO Sanity checks
 		mapNodeOne = to;
@@ -25,9 +25,9 @@ public class Path
 	{
 		return (mapNodeOne == node || mapNodeTwo == node);
 	}
-	public Pair<MapNode,MapNode> getNodes()
+	public Pair<MapNode<? extends Number>,MapNode<? extends Number>> getNodes()
 	{
-		return new Pair<MapNode,MapNode>(mapNodeOne,mapNodeTwo);
+		return new Pair<MapNode<? extends Number>,MapNode<? extends Number>>(mapNodeOne,mapNodeTwo);
 	}
 	public double getPathDistance()
 	{

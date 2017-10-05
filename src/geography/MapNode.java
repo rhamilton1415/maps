@@ -13,6 +13,7 @@ public abstract class MapNode<T extends Number>
 	{
 		xCoordinate = x;
 		yCoordinate = y;
+		paths = new HashSet<>();
 	}
 	public T getXCoordinate()
 	{

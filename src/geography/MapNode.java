@@ -4,6 +4,7 @@ import java.util.HashSet;
 
 public abstract class MapNode<T extends Number>
 {
+	//TODO add factory construction and Province IDs
 	private T xCoordinate;
 	private T yCoordinate;
 	private HashSet<Path> paths;
@@ -22,6 +23,7 @@ public abstract class MapNode<T extends Number>
 		return yCoordinate;
 	}
 	
+	//A safe version of the "getPathTo"
 	public <M extends MapNode<? extends Number>> boolean hasPathTo(M target)
 	{
 		try
@@ -44,6 +46,24 @@ public abstract class MapNode<T extends Number>
 			}
 		}
 		throw new Exception();
+	}
+	private void addPath(Path p)
+	{
+		//TODO Sanity Checks
+		paths.add(p);
+	}
+	@Override
+	public String toString()
+	{
+		//TODO convert to JSON string
+		return getXCoordinate().toString() + " " + getYCoordinate().toString();
+	}
+	public static void createPath(MapNode<? extends Number> to, MapNode<? extends Number> from)
+	{
+		//TODO Sanity checks
+		Path p = new Path(to,from);
+		to.addPath(p);
+		from.addPath(p);
 	}
 	/**
 	 * Returns the exact distance between the two MapNode arguments, not considering existing Paths

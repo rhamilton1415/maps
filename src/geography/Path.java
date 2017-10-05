@@ -16,6 +16,7 @@ public class Path
 	 */
 	public Path(MapNode to, MapNode from)
 	{
+		//TODO Sanity checks
 		mapNodeOne = to;
 		mapNodeTwo = from;
 		pathDistance = MapNode.getDistance(to, from);

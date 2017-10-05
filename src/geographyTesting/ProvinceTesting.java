@@ -3,22 +3,17 @@ package geographyTesting;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-
-public class ProvinceTesting {
-
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
-	
+import geography.*;
+public class ProvinceTesting 
+{
 	@Test
 	public void provinceConstructionTest()
 	{
 		Province<Integer> p = new Province<>(0,0);
-		assertEquals(p.getXCoordinate(),0);
-		assertEquals(p.getYCoordinate(),0);
+		assertEquals(p.getXCoordinate().intValue(),0);
+		assertEquals(p.getYCoordinate().intValue(),0);
 		MapNode<Integer> n = new Province<>(1,1);
-		assertTrue(n instanceof Province<Integer>);
+		assertTrue(n instanceof Province<?>);
 	}
 	
 	@Test
@@ -29,8 +24,15 @@ public class ProvinceTesting {
 		MapNode.createPath(pathFrom,pathTo);
 		assertTrue(pathFrom.hasPathTo(pathTo));
 		assertTrue(pathTo.hasPathTo(pathFrom));
-		assertTrue(pathTo.getPathTo(pathFrom) == pathFrom.getPathTo(pathTo));
-		assertEquals(pathTo.getPathTo(pathFrom).getDistance(),1);
+		try
+		{
+			assertTrue(pathTo.getPathTo(pathFrom) == pathFrom.getPathTo(pathTo));
+			assertEquals(pathTo.getPathTo(pathFrom).getPathDistance(),1,0);
+		}
+		catch(Exception e)
+		{
+			fail();
+		}
 	}
 	
 	@Test
